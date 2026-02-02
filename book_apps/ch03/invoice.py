@@ -1,0 +1,55 @@
+#!/usr/bin/env python3
+
+# display a welcome message
+print("The Invoice program")
+print()
+
+invoice_total = 0.0
+discount_amount = 0.0
+discount_percent = 0.0             
+
+# customer_type = input("Enter customer type (r/w):\t")
+# invoice_total = float(input("Enter invoice total:\t\t"))
+
+repeat = "y"
+
+while (repeat.lower() == "y"):
+    # get user entries
+    customer_type = input("Enter customer type (r/w):\t")
+    invoice_total = float(input("Enter invoice total:\t\t"))
+    print() 
+    # determine discounts for Retail customers
+    if customer_type.lower() == "r":
+        if invoice_total > 0 and invoice_total < 100:
+            discount_percent = 0
+        elif invoice_total >= 100 and invoice_total < 250:
+            discount_percent = .1
+        elif invoice_total >= 250 and invoice_total < 500:
+            discount_percent = .2
+        elif invoice_total >= 500:
+            discount_percent = .25
+    # determine discounts for Wholesale customers   
+    elif customer_type.lower() == "w":
+        if invoice_total > 0 and invoice_total < 500:
+            discount_percent = .4
+        elif invoice_total >= 500:
+            discount_percent = .5
+    # set discount to zero if neither Retail or Wholesale
+    else:
+        discount_percent = 0
+    repeat = input("Do you want to repeat: y/n ")
+
+
+# calculate discount amount and new invoice total
+discount_amount = round(invoice_total * discount_percent, 2)
+new_invoice_total = invoice_total - discount_amount                                         
+                    
+# display the results
+print(f"Invoice total:\t\t{invoice_total}")
+print(f"Discount percent:\t{discount_percent}")
+print(f"Discount amount:\t{discount_amount}")
+print(f"New invoice total:\t{new_invoice_total}")                      
+print() 
+print("Bye!")
+
+
