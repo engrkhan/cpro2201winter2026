@@ -49,3 +49,4 @@ class Cart:
     def __iter__(self):
         for item in self.__lineItems:
             yield item
+

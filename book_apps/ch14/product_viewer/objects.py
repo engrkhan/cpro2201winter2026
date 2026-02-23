@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 
-#@dataclass
+@dataclass
 class Product:
     # three attributes with default values
     name:str = ""                                 # attribute 1
